@@ -1,23 +1,23 @@
 import pygame 
 import Constantes
-import Sprites 
+import sprites 
 
 class game: 
-    def _init_(self):
+    def __init__(self):
         #criando a tela do jogo
         pygame.init()
         pygame.mixer.init()
         self.tela = pygame.display.set_mode((Constantes.LARGURA, Constantes.ALTURA))
         pygame.display.set_caption(Constantes.TITULO_JOGO)
-        self.relogio = pygame.time.Clock()
-        self.esta_rodando = true 
+        self.relogio = pygame.time.Clock ()
+        self.esta_rodando = True
 
     def novo_jogo(self):
         #instancia as classes das sprintes do jogo 
-        self.todas_as_sprites = pygame.sprite.group()
+        self.todas_as_sprites = pygame.sprite.Group()
         self.rodar()
 
-    def rodar(self)
+    def rodar(self):
         #loop do jogo 
         self.jogando = True
         while self.jogando:
@@ -29,10 +29,10 @@ class game:
     def eventos(self):
         #define os eventos do jogo
         for event in pygame.event.get():
-                If event.type == QUIT:
-                    If self.jogando:
-                        self.jogando = False
-                    self.esta_rodando = False 
+            if event.type == pygame.QUIT:
+                if self.jogando:
+                    self.jogando = False
+                self.esta_rodando = False 
   
     def atualizar_sprites(self):
         #atualizar sprites
@@ -50,10 +50,9 @@ class game:
     def mostrar_tela_game_over(self):
             pass 
     
-    g = game()
-    g.mostrar_tela_de_start()
+g = game ()
+g.mostrar_tela_start()
 
 while g.esta_rodando:
      g.novo_jogo()
      g.mostrar_tela_game_over()
-     
